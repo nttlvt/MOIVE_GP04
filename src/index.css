@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#app {
+  height: 100%;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel__flex {
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient(182deg, #F2FFF7 0%, #C3F4FF 100%);
+}
+
+.carousel__flex img {
+  height: 442px;
+}
+
+.banner-content {
+  width: 100%;
+  max-width: 630px;
+}
+
+.banner-heading {
+  color: var(--grey-900, #1D232C);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: calc(66/56);
+  margin-bottom: 40px;
+}
+
+.banner-heading strong {
+  font-weight: 500;
+}
+
+.banner-image {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.banner__btn {
+  color: white;
+  background-color: #0093E9;
+  background-image: (160deg, #0093E9 0%, #80D0C7 100%);
+  padding: 18px;
+  border-radius: 50px;
+  transition: all 0.8s;
+  font-size: 18px;
+}
+
+.banner__btn:hover {
+  background-image: linear-gradient(50deg, #0093E9 0%, #80D0C7 100%);
+}

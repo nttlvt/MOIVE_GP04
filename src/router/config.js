@@ -1,3 +1,5 @@
 export const PATH = {
-   login:'/login'
+   login: '/login',
+   banner: '/banner',
+   listcarousel:'/listcarousel',
 }
