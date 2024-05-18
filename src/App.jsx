@@ -6,6 +6,8 @@ import { Login } from './pages/Login'
 import { MainLayout } from './components/layouts/MainLayout'
 import { Banner } from './components/Banner/Banner'
 import { ListCarousel } from './components/Carousel/ListCarousel'
+import { Header } from './components/Headers/Header'
+import { Footer } from './components/Footers/Footer'
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
           <Route path={PATH.login} element={<Login />} />
           <Route path={PATH.banner} element={<Banner />} />
           <Route path={PATH.listcarousel} element={<ListCarousel />} />
+          <Route path={PATH.header} element={<Header/>}/>
+          <Route path={PATH.footer} element={<Footer/>}/>
         </Route>
 
     </Routes>

@@ -21,6 +21,20 @@ body {
   padding: 0;
 }
 
+/* font */
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+
+.container {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 1.5rem);
+  padding-left: var(--bs-gutter-x, 1.5rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .carousel__flex {
   display: flex;
   justify-content: space-between;
@@ -67,4 +81,70 @@ body {
 
 .banner__btn:hover {
   background-image: linear-gradient(50deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.header__top {
+  background-color: rgba(15, 23, 42, 1);
+  height: 78px;
+  display: flex;
+  justify-content: center; 
+}
+
+.header__bot {
+  background-color: rgba(15, 23, 42, 1);
+  border-top: 0.5px solid;
+  color: rgb(38, 46, 64);
+  height: 50px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.logo {
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.header__bot a:hover, .user:hover {
+  color: yellow;
+}
+
+.custom-popover .ant-popover-content {
+  left: 360px;
+  border-top: 0.5px solid rgb(38, 46, 64);
+}
+
+.re-custom-popover .ant-popover-content {
+  margin-top: -25px;
+  height: 30px !important;
+}
+
+.re-custom-popover .ant-popover-inner {
+  background-color: rgba(51, 102, 204) !important;  
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.re-custom-popover .ant-popover-arrow {
+  top: -24px !important;
+}
+
+:where(.css-dev-only-do-not-override-1r287do).ant-popover .ant-popover-arrow:before {
+  background: rgba(51, 102, 204);  
+
+}
+
+.ant-popover-inner {
+  background-color: rgba(15, 23, 42, 1) !important;
+  border-radius: 5px !important;
+}
+
+/* footer */
+.footer__content {
+  background-color: rgb(97 57 159);
+  padding-top: 100px;
+}
+
+:where(.css-dev-only-do-not-override-1r287do).ant-divider {
+  border-block-start: 1.5px solid #fff;
 }
