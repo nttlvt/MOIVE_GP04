@@ -18,7 +18,6 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route path={PATH.dangnhap} element={<Login />}></Route>
           <Route path={PATH.dangky} element={<Register />}></Route>
-  
         </Route>
     </Routes>
     </>

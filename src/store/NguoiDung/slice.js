@@ -7,7 +7,8 @@ const LOCAL_USER_LOGIN_KEY='USER'
 const initialState = {
     isFetchingRegister: false,
     isFetchingLogin: false,
-    userLogin:localStorage.getItem(LOCAL_USER_LOGIN_KEY)
+    userLogin:localStorage.getItem(LOCAL_USER_LOGIN_KEY),
+    heThongRapChieu: []
 }
 export const { reducer: quanLyNguoiDungReducer, actions: quanLyNguoiDungActions } = createSlice({
     name: 'quanLyNguoiDung',

@@ -18,7 +18,7 @@ export const Banner = () => {
                 spaceBetween={30}
                 loop={true}
                 autoplay={{
-                    delay: 500,
+                    delay: 3000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
