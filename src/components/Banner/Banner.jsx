@@ -12,13 +12,13 @@ import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/m
 
 export const Banner = () => {
     return (
-        <div className="container">
+        <div className="m-auto w-[80%]">
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
                 loop={true}
                 autoplay={{
-                    delay: 2500,
+                    delay: 500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -29,37 +29,24 @@ export const Banner = () => {
                 className="mySwiper"
                 Autoplay
             >
-                <SwiperSlide className="">
-                    <div >
-                        <div className="carousel__flex">
-                            <div className=" d-flex justify-center items-center p-8">
-                                <div>
-                                    <h2 className="banner-heading">
-                                      LẬT MẶT 7
-                                    </h2>
-                                    <button className="banner__btn">
+                <SwiperSlide>
+                    <div className="relative">
+                        <div className="absolute bottom-[20px] right-[200px]">
+                            <button className="bg-[#f3ea28] px-16 py-3 rounded-md font-bold hover:bg-gradient-to-r from-cyan-500 to-blue-500 duration-200 ease-in-out">
                                     ĐẶT VÉ NGAY
                                     </button>
                                 </div>
-                            </div>
-                            <img src="public/image/lat-mat-7.webp" alt="" />
-                        </div>
+                        <img className="w-full h-full " src="public/image/lat-mat-7.webp" alt="" />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div>
-                        <div className="carousel__flex ">
-                            <div className="p-8">
-                                <div>
-                                    <h2 className="banner-heading">
-                                    </h2>
-                                    <button className="banner__btn">
-                                      ĐẶT VÉ NGAY
+                <div className="relative">
+                        <div className="absolute bottom-[20px] right-[200px]">
+                            <button className="bg-[#f3ea28] px-16 py-3 rounded-md font-bold hover:bg-gradient-to-r from-cyan-500 to-blue-500 duration-200 ease-in-out">
+                                    ĐẶT VÉ NGAY
                                     </button>
                                 </div>
-                            </div>
-                            <img src="public/image/1215x365.webp" alt="" />
-                        </div>
+                        <img className="w-full h-full " src="public/image/1215x365.webp" alt="" />
                     </div>
                 </SwiperSlide>
             </Swiper>

@@ -2,15 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { Provider } from 'react-redux'
-import { store } from './store/config.js'
 import { BrowserRouter } from 'react-router-dom'
-
+import ReactToastifyProvider from './contexts/ReactToastifyProvider.jsx'
+import { Provider } from 'react-redux'
+import { store } from './store/index.js'
+import { ReactQueryProvider } from './contexts/ReactQueryProvider.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
+  <ReactToastifyProvider>
     <BrowserRouter>
-      <App />
-    </BrowserRouter>,
-  </Provider>
+      <Provider store={store}>
+        <ReactQueryProvider>
+          <App />
+        </ReactQueryProvider>
+      </Provider>
+    </BrowserRouter>
+  </ReactToastifyProvider>
+
+
 
 )

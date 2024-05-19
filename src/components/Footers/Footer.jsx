@@ -90,14 +90,17 @@ export const Footer = () => {
               </div>
               <Divider style={{ height: '4px' }}/>
               <div className="footer__bottom flex justify-between text-white text-[16px]">
-                <div class="footer-bottom-left">© 2023 Cinestar. All rights reserved.</div>
-                <ul class="menu-list flex gap-5 mr-[100px]">
-                  <li class="menu-item"><a class="menu-link" href="/chinh-sach-bao-mat">Chính sách bảo mật</a></li>
-                  <li class="menu-item"><a class="menu-link" href="/news">Tin điện ảnh</a></li>
-                  <li class="menu-item"><a class="menu-link" href="/faqs">Hỏi và đáp</a></li>
-                </ul>
-              </div>
-              <div classname="ft-author-content" style={{fontSize: '10px'}}>
+            <div>
+              <div className="footer-bottom-left">© 2023 Cinestar. All rights reserved.</div>
+              <ul className="menu-list flex gap-5 mr-[100px]">
+                <li className="menu-item"><a className="menu-link" href="/chinh-sach-bao-mat">Chính sách bảo mật</a></li>
+                <li className="menu-item"><a className="menu-link" href="/news">Tin điện ảnh</a></li>
+                <li className="menu-item"><a className="menu-link" href="/faqs">Hỏi và đáp</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div className="ft-author-content" style={{ fontSize: '10px' }}>
                 <ul className='text-white text-center mt-[60px]'>
                   <li>
                     CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM NGÔI SAO
