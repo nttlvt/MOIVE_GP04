@@ -10,7 +10,6 @@ export const useGetPhimList = () => {
         queryFn: () => quanLyPhimServices.getPhimList(),
     }
 
-
     )
     return {
         ...q,
