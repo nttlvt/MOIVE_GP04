@@ -12,7 +12,7 @@ import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/m
 
 export const Banner = () => {
     return (
-        <div className="m-auto w-[80%]">
+        <div className="m-auto w-[80%]" style={{marginTop: '60px'}}>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}

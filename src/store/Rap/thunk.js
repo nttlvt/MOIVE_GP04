@@ -6,7 +6,7 @@ export const quanLyRapThunks = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await quanLyRapServices.getRap();
-            return response.data.content;  // Assuming response.data.content contains the array of rap
+            return response.data.content;  
         } catch (error) {
             return rejectWithValue(error.response.data);
         }

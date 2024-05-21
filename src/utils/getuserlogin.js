@@ -1,5 +1,6 @@
-import React from 'react'
+export const getUserLogin = () => {
+    const userLogin = localStorage.getItem('USER')
 
-export const getuserlogin = () => {
-  
+    if (!userLogin) return
+    return JSON.parse(userLogin)
 }

@@ -3,5 +3,6 @@ export const PATH = {
    banner: '/banner',
    listcarousel:'/listcarousel',
    header: '/header',
-   footer: '/footer'
+   footer: '/footer',
+   detail: '/detail',
 }

@@ -19,7 +19,7 @@ export const HomeMenu = () => {
 
     return (
         <div>
-            <Tabs tabPosition={tabPosition} className='bg-slate-50 container' style={{borderRadius: '20px', marginBottom: '100px'}}>
+            <Tabs tabPosition={tabPosition} className='bg-slate-50 container' style={{borderRadius: '20px', marginBottom: '100px', marginTop: '60px', paddingTop: '50px', paddingBottom: '40px'}}>
                 {heThongRapChieu && heThongRapChieu.slice(0, 5).map((rap, index) => (
                     <TabPane tab={<img src={rap.logo} alt={rap.tenHeThongRap} className='rounded-full' width="50" />} key={index}>
                         <Tabs tabPosition={tabPosition} className=''>

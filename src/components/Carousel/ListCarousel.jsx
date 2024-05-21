@@ -6,10 +6,11 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useGetPhimList } from '../../hooks/api';
 import { Button } from 'antd';
+import { NavLink } from 'react-router-dom';
 export const ListCarousel = () => {
     const { data } = useGetPhimList()
     return (
-        <div className="my-5 m-auto w-[80%] ">
+        <div className="my-5 m-auto w-[80%] " style={{marginTop: '60px'}}>
             <Swiper
                 navigation={true}
                 slidesPerView={4}
@@ -27,7 +28,7 @@ export const ListCarousel = () => {
                             <img className=' h-[400px]' src={value.hinhAnh} alt="" />
                             <p className='text-[20px] text-white mt-3'>{value.tenPhim}</p>
                             <div className='flex justify-between'> 
-                            <Button>Xem trailer</Button>
+                            <NavLink to={`/detail/${value.maPhim}`}>Xem trailer</NavLink>
                             <Button >Đặt vé</Button>
                             </div>
                         </SwiperSlide>

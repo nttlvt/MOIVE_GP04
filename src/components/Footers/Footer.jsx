@@ -4,8 +4,8 @@ import React from 'react'
 export const Footer = () => {
   return (
     <div>
-        <div className="container">
-            <div className="footer__content">
+        <div className="footer__content">
+            <div className="container">
               <div className="grid grid-cols-12">
                 <div className="col-span-4 flex flex-col gap-5">
                   <a className="logo" href="/">
