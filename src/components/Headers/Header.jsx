@@ -5,7 +5,7 @@ import { LichIcon, RapIcon, UserIcon } from '../../assets/icon/UserIcon'
 
 export const Header = () => {
   return (
-    <div className='container'> 
+    <div className=''> 
         <div className="header__top">
             <div className="header__top--content flex gap-36">
                 <a className="logo" href="/">
