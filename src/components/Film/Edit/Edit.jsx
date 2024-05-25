@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DatePicker, Form, Input, InputNumber, Switch } from "antd";
 import { useForm, Controller } from "react-hook-form";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { addPhimActionsThunks } from "../../../store/Phim";
+import { updatePhimActionsThunks } from "../../../store/Phim";
+import { useGetInforMovie } from "../../../hooks/api/useGetInforMovie";
 
-export const AddNew = () => {
+export const Edit = () => {
   const [image, setImage] = useState("");
+  const { data } = useGetInforMovie();
+  const dispatch = useDispatch();
+  const { loading, error, success } = useSelector((state) => state.updatePhim);
 
   const {
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
+      maPhim: "",
       tenPhim: "",
       trailer: "",
       moTa: "",
@@ -23,11 +29,27 @@ export const AddNew = () => {
       hot: false,
       danhGia: 10,
       hinhAnh: {},
-      maNhom: 'GP04',
+      maNhom: "GP04",
     },
   });
-  const dispatch = useDispatch();
-  const { loading, error, success } = useSelector((state) => state.addPhim);
+
+  useEffect(() => {
+    if (data) {
+      setValue("tenPhim", data.maPhim);
+      setValue("tenPhim", data.tenPhim);
+      setValue("trailer", data.trailer);
+      setValue("moTa", data.moTa);
+      setValue(
+        "ngayKhoiChieu",
+        moment(data.ngayKhoiChieu).format("DD/MM/YYYY")
+      );
+      setValue("dangChieu", data.dangChieu);
+      setValue("sapChieu", data.sapChieu);
+      setValue("hot", data.hot);
+      setValue("danhGia", data.danhGia);
+      setImage(data.hinhAnh);
+    }
+  }, [data, setValue]);
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -39,15 +61,19 @@ export const AddNew = () => {
     formData.append("dangChieu", data.dangChieu);
     formData.append("hot", data.hot);
     formData.append("danhGia", data.danhGia);
-    formData.append("maNhom", data.maNhom); 
+    formData.append("maNhom", data.maNhom);
     formData.append("hinhAnh", data.hinhAnh);
+    if (data.hinhAnh.length > 0) {
+      formData.append("hinhAnh", data.hinhAnh[0]);
+    }
 
-    dispatch(addPhimActionsThunks.addPhimThunks(formData));
+    console.log(data.hinhAnh);
+    dispatch(updatePhimActionsThunks.updatePhimThunks(formData));
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ maxWidth: 600 }}>
-      <h3 className="mb-10 text-red-700 font-bold">THÊM PHIM</h3>
+      <h3 className="mb-10 text-red-700 font-bold">CẬP NHẬT PHIM</h3>
       <Form.Item label="Tên phim">
         <Controller
           name="tenPhim"
@@ -167,11 +193,11 @@ export const AddNew = () => {
           type="submit"
           className="bg-blue-300 text-white p-2 text-center rounded-xl"
         >
-          {loading ? "Đang thêm..." : "Thêm phim"}
+          {loading ? "Đang cập nhật..." : "Cập nhật phim"}
         </button>
         {error && <div className="error">{error}</div>}
         {success && (
-          <div className="success">Phim đã được thêm thành công!</div>
+          <div className="success">Phim đã được cập nhật thành công!</div>
         )}
       </Form.Item>
     </form>

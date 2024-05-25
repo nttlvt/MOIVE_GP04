@@ -13,6 +13,7 @@ import { Admin } from "./components/layouts/Admin";
 import { Film } from "./components/Film/Film";
 import { User } from "./components/User/User";
 import { AddNew } from "./components/Film/AddNew/AddNew";
+import { Edit } from "./components/Film/Edit/Edit";
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
           <Route path={PATH.user} element={<User />} />
           <Route path={PATH.film} element={<Film />} />
           <Route path={PATH.addfilm} element={<AddNew />} />
+          <Route path={PATH.editfilm} element={<Edit />} />
         </Route>
       </Routes>
     </>

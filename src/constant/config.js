@@ -10,5 +10,6 @@ export const PATH = {
     admin: '/admin/user',
     user: '/admin/user',
     film: '/admin/film',
-    addfilm: '/admin/film/addfilm'
+    addfilm: '/admin/film/addfilm',
+    editfilm: '/admin/film/editfilm/:maPhim'
 }

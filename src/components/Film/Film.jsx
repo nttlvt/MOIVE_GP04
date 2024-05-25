@@ -65,8 +65,8 @@ const columns = [
     dataIndex: "hanhDong",
     render: (text, film) => (
       <Fragment>
-        <NavLink className='mr-2 text-2xl' to={PATH.home}><EditOutlined style={{color: 'blue'}}/></NavLink>
-        <NavLink className='text-2xl' to={PATH.home}><DeleteOutlined style={{color: 'red'}}/></NavLink>
+        <NavLink key={1} className='mr-2 text-2xl' to={PATH.editfilm.replace(':maPhim', film.maPhim)}><EditOutlined style={{color: 'blue'}}/></NavLink>
+        <NavLink key={2} className='text-2xl' to={PATH.home}><DeleteOutlined style={{color: 'red'}}/></NavLink>
       </Fragment>
     ),
     sortDirections: ["descend", 'ascend'],
