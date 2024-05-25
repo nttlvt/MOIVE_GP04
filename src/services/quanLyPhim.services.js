@@ -11,7 +11,7 @@ const api = axios.create({
 export const quanLyPhimServices = {
   getPhimList: async () => {
     try {
-      const response = await api.get('/QuanLyPhim/LayDanhSachPhim');
+      const response = await api.get('/QuanLyPhim/LayDanhSachPhim?maNhom=GP04');
       return response;
     } catch (error) {
       console.error('Error fetching phim list:', error);
@@ -19,7 +19,16 @@ export const quanLyPhimServices = {
   },
 
   getMovieById:  (query) => {
-   
       return api.get(`/QuanLyRap/LayThongTinLichChieuPhim${query}`);
+  },
+
+  addPhim: async (formData) => {
+    try {
+      const response = await api.post(`/QuanLyPhim/ThemPhimUploadHinh`, formData);
+      return response.data;
+    } catch (error) {
+      console.error('Error adding movie:', error);
+      throw error;  
+    }
   }
 };
