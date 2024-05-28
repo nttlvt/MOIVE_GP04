@@ -43,27 +43,30 @@ export const Admin = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <img
-          width={130}
-          height={130}
-          src="https://cinestar.com.vn/_next/image/?url=%2Fassets%2Fimages%2Fheader-logo.png&w=1920&q=75"
-          alt=""
-          style={{
-            marginTop: "20px",
-            marginLeft: "10px",
-            marginBottom: "10px",
-          }}
-        />
+        <NavLink to={PATH.home}>
+          <img
+            width={130}
+            height={130}
+            src="https://cinestar.com.vn/_next/image/?url=%2Fassets%2Fimages%2Fheader-logo.png&w=1920&q=75"
+            alt=""
+            style={{
+              marginTop: "20px",
+              marginLeft: "10px",
+              marginBottom: "10px",
+            }}
+          />
+        </NavLink>
+
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<UserOutlined />}>
+          {/* <Menu.Item key="1" icon={<UserOutlined />}>
             <NavLink to={PATH.user}>User</NavLink>
-          </Menu.Item>
+          </Menu.Item> */}
           <SubMenu key="5" icon={<TeamOutlined />} title="Films">
             <Menu.Item key="2" icon={<TeamOutlined />}>
               <NavLink to={PATH.film}>Film</NavLink>
             </Menu.Item>
             <Menu.Item key="4" icon={<TeamOutlined />}>
-              <NavLink to={PATH.addfilm}>Add New</NavLink>
+              <NavLink to={PATH.addfilm}>Thêm Film</NavLink>
             </Menu.Item>
           </SubMenu>
         </Menu>

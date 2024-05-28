@@ -3,20 +3,19 @@ import { useParams } from 'react-router-dom';
 import qs from 'qs';
 import { quanLyPhimServices } from '../../services/quanLyPhim.services';
 
-export const useGetInforMovie = () => {
+export const useDeletePhim = (maPhimQ) => {
   const { maPhim } = useParams();
+  maPhimQ = maPhim
 
   const q = useQuery({
-    queryKey: ['MovieInfo', maPhim],
+    queryKey: ['MovieDelete', maPhimQ],
     queryFn: async () => {
-      const query = qs.stringify({ MaPhim: maPhim }, { addQueryPrefix: true });
-      return  quanLyPhimServices.getInfoMovie(query);
+      const query = qs.stringify({ MaPhim: maPhimQ }, { addQueryPrefix: true });
+      // return  quanLyPhimServices.deletePhim(query);
+      return query
     }
   });
-
-
   return {
-    ...q,
-    data: q?.data?.data?.content,
+    del:q
   };
 };

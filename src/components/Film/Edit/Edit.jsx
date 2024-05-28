@@ -35,7 +35,7 @@ export const Edit = () => {
 
   useEffect(() => {
     if (data) {
-      setValue("tenPhim", data.maPhim);
+      setValue("maPhim", data.maPhim);
       setValue("tenPhim", data.tenPhim);
       setValue("trailer", data.trailer);
       setValue("moTa", data.moTa);
@@ -53,6 +53,7 @@ export const Edit = () => {
 
   const onSubmit = (data) => {
     const formData = new FormData();
+    formData.append("maPhim", data.maPhim);
     formData.append("tenPhim", data.tenPhim);
     formData.append("trailer", data.trailer);
     formData.append("moTa", data.moTa);
@@ -62,12 +63,11 @@ export const Edit = () => {
     formData.append("hot", data.hot);
     formData.append("danhGia", data.danhGia);
     formData.append("maNhom", data.maNhom);
-    formData.append("hinhAnh", data.hinhAnh);
-    if (data.hinhAnh.length > 0) {
-      formData.append("hinhAnh", data.hinhAnh[0]);
+    // formData.append("hinhAnh", data.hinhAnh);
+    if (!data.hinhAnh[0] && !data.hinhAnh[0] !== image) {
+      formData.append("hinhAnh", data.hinhAnh);
     }
 
-    console.log(data.hinhAnh);
     dispatch(updatePhimActionsThunks.updatePhimThunks(formData));
   };
 
@@ -179,6 +179,7 @@ export const Edit = () => {
                   reader.onloadend = (event) => {
                     setImage(event.target.result);
                     field.onChange(file);
+                    console.log(file.type)
                   };
                   reader.readAsDataURL(file);
                 }
@@ -195,10 +196,6 @@ export const Edit = () => {
         >
           {loading ? "Đang cập nhật..." : "Cập nhật phim"}
         </button>
-        {error && <div className="error">{error}</div>}
-        {success && (
-          <div className="success">Phim đã được cập nhật thành công!</div>
-        )}
       </Form.Item>
     </form>
   );

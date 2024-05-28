@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DatePicker, Form, Input, InputNumber, Switch } from "antd";
 import { useForm, Controller } from "react-hook-form";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { addPhimActionsThunks } from "../../../store/Phim";
+import { NavLink, useNavigate } from "react-router-dom";
+import { PATH } from "../../../constant/config";
 
 export const AddNew = () => {
   const [image, setImage] = useState("");
@@ -27,7 +29,9 @@ export const AddNew = () => {
     },
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { loading, error, success } = useSelector((state) => state.addPhim);
+  
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -41,8 +45,10 @@ export const AddNew = () => {
     formData.append("danhGia", data.danhGia);
     formData.append("maNhom", data.maNhom); 
     formData.append("hinhAnh", data.hinhAnh);
+    console.log(data.hinhAnh)
 
     dispatch(addPhimActionsThunks.addPhimThunks(formData));
+    navigate(PATH.film)
   };
 
   return (
@@ -155,6 +161,7 @@ export const AddNew = () => {
                     field.onChange(file);
                   };
                   reader.readAsDataURL(file);
+                  console.log(file.type)
                 }
               }}
             />

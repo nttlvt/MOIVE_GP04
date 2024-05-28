@@ -1,94 +1,112 @@
-import React, { Fragment, useEffect } from "react";
-import { Button, Table } from "antd";
-import { AudioOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Input, Space } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { Button, Table, Input } from "antd";
+import { CalendarOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { useGetPhimList } from "../../hooks/api";
-import { object } from "zod";
 import { NavLink, useNavigate } from "react-router-dom";
 import { PATH } from "../../constant/config";
+import { useDispatch } from "react-redux";
+import { deletePhimActionsThunks } from "../../store/Phim";
 
 const { Search } = Input;
-const columns = [
-  {
-    title: "Mã phim",
-    dataIndex: "maPhim",
-    // value: (text, object) => {return <span>{text}</span>},
-    sorter: (a, b) => a.maPhim - b.maPhim,
-    sortDirections: ["descend", 'ascend'],
-    width: '10%'
-  },
-  {
-    title: "Hình ảnh",
-    dataIndex: "hinhAnh",
-    render: (text, film) => (
-      <Fragment>
-        <img src={film.hinhAnh} width={300} height={300} alt="" />
-      </Fragment>
-    ),
-    width: '30%'
-  },
-  {
-    title: "Tên phim",
-    dataIndex: "tenPhim",
-    sorter: (a, b) => {
-      let moTaA = a.moTa.toLowerCase().trim()
-      let moTaB = b.moTa.toLowerCase().trim()
-      if (moTaA < moTaB)
-        return 1
-      return -1
-    },
-    sortDirections: ["descend", 'ascend'],
-    width: '20%'
-  },
-
-  {
-    title: "Mô tả",
-    dataIndex: "moTa",
-    sorter: (a, b) => {
-      let tenPhimA = a.tenPhim.toLowerCase().trim()
-      let tenPhimB = b.tenPhim.toLowerCase().trim()
-      if (tenPhimA < tenPhimB)
-        return 1
-      return -1
-    },
-    render: (text, film) => (
-      <Fragment>
-        {film.moTa.length>200 ? film.moTa.substr(0,200)+ '...': film.moTa}
-      </Fragment>
-    ),
-    sortDirections: ["descend", 'ascend'],
-    width: '30%'
-  },
-
-  {
-    title: "Hành động",
-    dataIndex: "hanhDong",
-    render: (text, film) => (
-      <Fragment>
-        <NavLink key={1} className='mr-2 text-2xl' to={PATH.editfilm.replace(':maPhim', film.maPhim)}><EditOutlined style={{color: 'blue'}}/></NavLink>
-        <NavLink key={2} className='text-2xl' to={PATH.home}><DeleteOutlined style={{color: 'red'}}/></NavLink>
-      </Fragment>
-    ),
-    sortDirections: ["descend", 'ascend'],
-    width: '10%'
-  },
-];
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-
-const onSearch = (value, _e, info) => console.log(info?.source, value);
 
 export const Film = () => {
-  const { data } = useGetPhimList();
-  // useEffect(() => {
-  //   console.log(data)
-  // },data)
-  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState("");
+  const { data, refetch } = useGetPhimList(searchTerm);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleDelete = (maPhim) => {
+    dispatch(deletePhimActionsThunks.deletePhimThunks(maPhim));
+    refetch();
+  };
+
+  const onSearch = (value) => {
+    setSearchTerm(value);
+    refetch();
+  };
+
+  const columns = [
+    {
+      title: "Mã phim",
+      dataIndex: "maPhim",
+      sorter: (a, b) => a.maPhim - b.maPhim,
+      sortDirections: ["descend", "ascend"],
+      width: "10%",
+    },
+    {
+      title: "Hình ảnh",
+      dataIndex: "hinhAnh",
+      render: (text, film) => (
+        <Fragment>
+          <img src={film.hinhAnh} width={300} height={300} alt="" />
+        </Fragment>
+      ),
+      width: "30%",
+    },
+    {
+      title: "Tên phim",
+      dataIndex: "tenPhim",
+      sorter: (a, b) => a.tenPhim.localeCompare(b.tenPhim),
+      sortDirections: ["descend", "ascend"],
+      width: "20%",
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "moTa",
+      render: (text, film) => (
+        <Fragment>
+          {film.moTa.length > 200 ? `${film.moTa.substr(0, 200)}...` : film.moTa}
+        </Fragment>
+      ),
+      sortDirections: ["descend", "ascend"],
+      width: "30%",
+    },
+    {
+      title: "Hành động",
+      dataIndex: "maPhim",
+      render: (text, film) => (
+        <Fragment>
+          <NavLink
+            key={1}
+            className="mr-2 text-2xl"
+            to={PATH.editfilm.replace(":maPhim", film.maPhim)}
+          >
+            <EditOutlined style={{ color: "blue" }} />
+          </NavLink>
+          <span
+            style={{ cursor: "pointer" }}
+            key={2}
+            className="text-2xl"
+            onClick={() => {
+              if (window.confirm('Bạn có chắc muốn xóa phim ' + film.tenPhim)) {
+                handleDelete(film.maPhim);
+                navigate(PATH.film)
+              }
+            }}
+          >
+            <DeleteOutlined style={{ color: "red" }} />
+          </span>
+          <NavLink
+            key={6}
+            className="ml-2 text-2xl"
+            to={PATH.addlichchieu.replace(":maPhim", film.maPhim)}
+          >
+            <CalendarOutlined style={{ color: "green" }} />
+          </NavLink>
+        </Fragment>
+      ),
+      sortDirections: ["descend", "ascend"],
+      width: "10%",
+    },
+  ];
+
   return (
-    <div className="">
+    <div>
       <h3 className="text-4xl font-bold mb-10">Quản lý phim</h3>
-      <Button className="mb-5" onClick={() => navigate(PATH.addfilm)}>Thêm phim</Button>
+      <Button className="mb-5" onClick={() => navigate(PATH.addfilm)}>
+        Thêm phim
+      </Button>
       <Search
         placeholder="Tìm kiếm phim"
         className="mb-10"
@@ -99,10 +117,11 @@ export const Film = () => {
       <Table
         columns={columns}
         dataSource={data}
-        onChange={onChange}
+        onChange={(pagination, filters, sorter, extra) => console.log("params", pagination, filters, sorter, extra)}
         showSorterTooltip={{
-          target: "sorter-icon",
+          title: "Sắp xếp",
         }}
+        rowKey={"maPhim"}
       />
     </div>
   );
