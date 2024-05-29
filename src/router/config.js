@@ -5,4 +5,5 @@ export const PATH = {
    header: '/header',
    footer: '/footer',
    detail: '/detail',
+   checkout:'/checkout',
 }

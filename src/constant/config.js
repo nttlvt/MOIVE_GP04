@@ -6,5 +6,6 @@ export const PATH = {
     listcarousel: '/listcarousel',
     header: '/header',
     footer: '/footer',
-    detail: '/detail/:id'
+    detail: '/detail/:id',
+    checkout:'/checkout'
 }

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { quanLyNguoiDungActionsThunks } from ".";
+import { getUserLogin } from "../../utils/getuserlogin";
+import { TOKEN } from "../../constant/localStorage";
 
 
 
@@ -7,7 +9,7 @@ const LOCAL_USER_LOGIN_KEY='USER'
 const initialState = {
     isFetchingRegister: false,
     isFetchingLogin: false,
-    userLogin:localStorage.getItem(LOCAL_USER_LOGIN_KEY),
+    userLogin: getUserLogin(),
     heThongRapChieu: []
 }
 export const { reducer: quanLyNguoiDungReducer, actions: quanLyNguoiDungActions } = createSlice({
@@ -45,7 +47,12 @@ export const { reducer: quanLyNguoiDungReducer, actions: quanLyNguoiDungActions 
                 state.isFetchingLogin = false
 
                 //lưu thông tin
-                localStorage.setItem(LOCAL_USER_LOGIN_KEY,JSON.stringify(payload))
+
+                localStorage.setItem(LOCAL_USER_LOGIN_KEY, JSON.stringify(payload))
+                localStorage.setItem(TOKEN, payload.payload.accessToken)
+                
+            
+                state.userLogin = payload
 
             })
             .addCase(quanLyNguoiDungActionsThunks.loginThunk.rejected, (state, action) => {

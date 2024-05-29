@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { loginSchema } from '../../schemas/login.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { PATH } from '../../constant/config'
 import { useDispatch ,useSelector} from 'react-redux'
 import { quanLyNguoiDungActions } from '../../store/NguoiDung/slice'
@@ -12,7 +12,7 @@ import { toast, ToastContainer } from 'react-toastify'
 export const LoginTemplate = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { isFetchingLogin } = useSelector((state) => state.quanLyNguoiDung)
+    const { isFetchingLogin , userLogin} = useSelector((state) => state.quanLyNguoiDung)
     const { handleSubmit, control, formState: { errors } } = useForm({
         resolver: zodResolver(loginSchema)
     })
@@ -32,6 +32,9 @@ export const LoginTemplate = () => {
             toast.error(error?.response.data?.content)
 
         })
+    }
+    if (userLogin) {
+        return <Navigate to ='/'/>
     }
     return (
         <div>

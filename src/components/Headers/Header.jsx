@@ -2,8 +2,12 @@ import { SearchOutlined } from '@ant-design/icons'
 import { Avatar, Button, Input, Popover } from 'antd'
 import React from 'react'
 import { LichIcon, RapIcon, UserIcon } from '../../assets/icon/UserIcon'
+import { useSelector } from 'react-redux'
+import { quanLyNguoiDungActionsThunks } from '../../store/NguoiDung'
 
 export const Header = () => {
+    const { userLogin } = useSelector((state) => state.quanLyNguoiDung)
+    console.log('userLogin', userLogin)
   return (
     <div className=''> 
         <div className="header__top">
@@ -30,7 +34,7 @@ export const Header = () => {
 
                     <div className='text-white flex mt-5'>
                         <Avatar size={'large'} icon={<UserIcon/>}/>
-                        <p className='mt-3 font-bold user'>Tài khoản</p>
+                          <p className='mt-3 font-bold user'>{userLogin ? <p>{userLogin?.payload.hoTen}</p> : <p>Tài khoản</p>}</p>
                     </div>
 
                     <Popover className='text-white flex gap-2 mt-5' content = {

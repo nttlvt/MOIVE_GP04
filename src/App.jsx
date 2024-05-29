@@ -9,6 +9,7 @@ import { AuthLayout } from './components/layouts/AuthLayout'
 import { Register } from './pages/Register'
 import { PATH } from './constant/config'
 import { Detail } from './components/Detail/Detail'
+import { Checkout } from './components/Checkout/Checkout'
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
           <Route path={PATH.dangnhap} element={<Login />}></Route>
           <Route path={PATH.dangky} element={<Register />}></Route>
         </Route>
+        <Route path={"/checkout/:id"} element={<Checkout />}></Route>
     </Routes>
     </>
   )
