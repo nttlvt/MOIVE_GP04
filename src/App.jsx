@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { Route, Routes, createBrowserRouter } from "react-router-dom";
 // import { PATH } from './router/config'
+import { Checkout } from './components/Checkout/Checkout'
 import { Login } from "./pages/Login";
 import { MainLayout } from "./components/layouts/MainLayout";
 import { Home } from "./pages/Home";
@@ -15,6 +16,7 @@ import { User } from "./components/User/User";
 import { AddNew } from "./components/Film/AddNew/AddNew";
 import { Edit } from "./components/Film/Edit/Edit";
 import { AddLichChieu } from "./components/Film/AddLichChieu/AddLichChieu";
+
 function App() {
   return (
     <>
@@ -27,6 +29,10 @@ function App() {
           <Route path={PATH.dangnhap} element={<Login />}></Route>
           <Route path={PATH.dangky} element={<Register />}></Route>
         </Route>
+
+        <Route path={"/checkout/:id"} element={<Checkout />}></Route>
+    </Routes>
+
         <Route element={<Admin />}>
           <Route path={PATH.user} element={<User />} />
           <Route path={PATH.film} element={<Film />} />
@@ -35,6 +41,7 @@ function App() {
           <Route path={PATH.addlichchieu} element={<AddLichChieu />} />
         </Route>
       </Routes>
+
     </>
   );
 }

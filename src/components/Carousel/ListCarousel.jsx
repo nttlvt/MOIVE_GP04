@@ -6,7 +6,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useGetPhimList } from '../../hooks/api';
 import { Button } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate} from 'react-router-dom';
+import { PATH } from '../../constant/config';
 export const ListCarousel = () => {
     const { data } = useGetPhimList()
     return (
@@ -29,7 +30,7 @@ export const ListCarousel = () => {
                             <p className='text-[20px] text-white mt-3'>{value.tenPhim}</p>
                             <div className='flex justify-between'> 
                             <NavLink to={`/detail/${value.maPhim}`}>Xem trailer</NavLink>
-                            <Button >Đặt vé</Button>
+                                <Button onClick={() => Navigate(PATH.checkout)} >Đặt vé</Button>
                             </div>
                         </SwiperSlide>
                     })

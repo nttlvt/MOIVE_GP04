@@ -29,7 +29,7 @@ export const loginThunk = createAsyncThunk(
 
             const result = await qlNguoiDungServices.dangNhap(payload)
             console.log('result', result);
-            return result
+            return result.data.content
         }
         catch (err) {
             return rejectWithValue(err)
