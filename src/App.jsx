@@ -31,8 +31,6 @@ function App() {
         </Route>
 
         <Route path={"/checkout/:id"} element={<Checkout />}></Route>
-    </Routes>
-
         <Route element={<Admin />}>
           <Route path={PATH.user} element={<User />} />
           <Route path={PATH.film} element={<Film />} />
@@ -40,7 +38,10 @@ function App() {
           <Route path={PATH.editfilm} element={<Edit />} />
           <Route path={PATH.addlichchieu} element={<AddLichChieu />} />
         </Route>
+
       </Routes>
+
+
 
     </>
   );
