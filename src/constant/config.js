@@ -7,9 +7,7 @@ export const PATH = {
     header: '/header',
     footer: '/footer',
     detail: '/detail/:id',
-
-    checkout:'/checkout'
-
+    checkout:'/checkout',
     admin: '/admin/user',
     user: '/admin/user',
     film: '/admin/film',
