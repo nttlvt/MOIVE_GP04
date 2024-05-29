@@ -102,3 +102,11 @@ body {
 :where(.css-dev-only-do-not-override-1r287do).ant-divider {
   border-block-start: 1.5px solid #fff;
 }
+
+:where(.css-dev-only-do-not-override-1r287do).ant-popover .ant-popover-arrow:before {
+  background: #fff;
+} 
+
+.custom-popoverr .ant-popover-arrow {
+  display: none;
+}
