@@ -164,7 +164,7 @@ export const Edit = () => {
           name="hinhAnh"
           control={control}
           render={({ field }) => (
-            <input
+            <input className="mt-2"
               type="file"
               onChange={(e) => {
                 const file = e.target.files[0];
@@ -187,9 +187,9 @@ export const Edit = () => {
             />
           )}
         />
-        <img style={{ width: "200px", height: "150px" }} src={image} alt="" />
+        <img style={{ width: "40%", height: "40%", marginTop: "20px" }} src={image} alt="" />
       </Form.Item>
-      <Form.Item label="Thao tác">
+      <Form.Item >
         <button
           type="submit"
           className="bg-blue-300 text-white p-2 text-center rounded-xl"

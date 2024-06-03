@@ -34,24 +34,24 @@ export const Detail = () => {
             blur={10} // default blur value is 10px
             borderRadius={0} // default border radius value is 10px
           >
-            <div className="grid grid-cols-12 text-white">
-              <div className="col-span-5 col-start-3">
+            <div className="grid grid-cols-12 text-white mt-5">
+              <div className="col-span-7 col-start-2">
                 <div className="grid grid-cols-3">
                   {data.hinhAnh && (
                     <img
-                      className="col-span-1"
-                      src={data.hinhAnh}
-                      style={{ width: "100%", height: "300px" }}
-                      alt={data.tenPhim}
-                    />
+                    className="col-span-1 rounded-lg shadow-lg"
+                    src={data.hinhAnh}
+                    style={{ width: "100%", height: "auto" }}
+                    alt={data.tenPhim}
+                  />
                   )}
                   <div className="col-span-2 ml-5">
                     <div className="text-sm">
                       Ngày chiếu:{" "}
                       {moment(data.ngayKhoiChieu).format("DD.MM - YYYY")}
                     </div>
-                    <p className="text-4xl leading-2  ">{data.tenPhim}</p>
-                    <p>{data.moTa}</p>
+                    <p className="text-4xl font-bold mt-5">{data.tenPhim}</p>
+                    <p className="mt-5">{data.moTa}</p>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@ export const Detail = () => {
                 </h1>
                 <h1
                   style={{ marginLeft: "15%" }}
-                  className="text-green-400 text-2xl"
+                  className="text-green-400 text-2xl mt-5"
                 >
                   <Rate
                     allowHalf
@@ -77,7 +77,7 @@ export const Detail = () => {
                     style={{ color: "#78ed78", fontSize: 30 }}
                   />
                 </h1>
-                <div className={`c100 p${data.danhGia * 10} big`}>
+                <div style={{ marginLeft: "15%" }} className={`c100 p${data.danhGia * 10} big mt-5`}>
                   <span>{data.danhGia * 10}%</span>
                   <div className="slice">
                     <div className="bar" />
@@ -120,7 +120,7 @@ export const Detail = () => {
                                 </div>
                                 <div className="grid grid-cols-4 mt-7">
                                   {cum.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
-                                    return <NavLink to='/' key={index} className='col-span-1 text-green-800 font-bold'>
+                                    return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className='col-span-1 text-green-800 font-bold'>
                                       {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                                     </NavLink>
                                   })}

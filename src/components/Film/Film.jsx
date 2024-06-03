@@ -1,6 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button, Table, Input } from "antd";
-import { CalendarOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  CalendarOutlined,
+  DeleteOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
 import { useGetPhimList } from "../../hooks/api";
 import { NavLink, useNavigate } from "react-router-dom";
 import { PATH } from "../../constant/config";
@@ -33,6 +37,7 @@ export const Film = () => {
       sorter: (a, b) => a.maPhim - b.maPhim,
       sortDirections: ["descend", "ascend"],
       width: "10%",
+      render: (maPhim) => <span style={{ fontWeight: "bold" }}>{maPhim}</span>,
     },
     {
       title: "Hình ảnh",
@@ -42,21 +47,26 @@ export const Film = () => {
           <img src={film.hinhAnh} width={300} height={300} alt="" />
         </Fragment>
       ),
-      width: "30%",
+      width: "25%",
     },
     {
       title: "Tên phim",
       dataIndex: "tenPhim",
       sorter: (a, b) => a.tenPhim.localeCompare(b.tenPhim),
       sortDirections: ["descend", "ascend"],
-      width: "20%",
+      width: "25%",
+      render: (tenPhim) => <span style={{ fontSize: "18px" }}>{tenPhim}</span>,
     },
     {
       title: "Mô tả",
       dataIndex: "moTa",
       render: (text, film) => (
         <Fragment>
-          {film.moTa.length > 200 ? `${film.moTa.substr(0, 200)}...` : film.moTa}
+          <span style={{ fontStyle: "italic" }}>
+            {film.moTa.length > 200
+              ? `${film.moTa.substr(0, 200)}...`
+              : film.moTa}
+          </span>
         </Fragment>
       ),
       sortDirections: ["descend", "ascend"],
@@ -79,9 +89,9 @@ export const Film = () => {
             key={2}
             className="text-2xl"
             onClick={() => {
-              if (window.confirm('Bạn có chắc muốn xóa phim ' + film.tenPhim)) {
+              if (window.confirm("Bạn có chắc muốn xóa phim " + film.tenPhim)) {
                 handleDelete(film.maPhim);
-                navigate(PATH.film)
+                navigate(PATH.film);
               }
             }}
           >
@@ -117,7 +127,9 @@ export const Film = () => {
       <Table
         columns={columns}
         dataSource={data}
-        onChange={(pagination, filters, sorter, extra) => console.log("params", pagination, filters, sorter, extra)}
+        onChange={(pagination, filters, sorter, extra) =>
+          console.log("params", pagination, filters, sorter, extra)
+        }
         showSorterTooltip={{
           title: "Sắp xếp",
         }}

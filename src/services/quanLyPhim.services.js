@@ -14,10 +14,10 @@ export const quanLyPhimServices = {
   getPhimList: async (tenPhim = '') => {
     try {
       if (tenPhim.trim()!='') {
-        const response = await api.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP04&tenPhim=${tenPhim}`)
+        const response = await api.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP03&tenPhim=${tenPhim}`)
         return response;
       }
-      const response = await api.get('/QuanLyPhim/LayDanhSachPhim?maNhom=GP04');
+      const response = await api.get('/QuanLyPhim/LayDanhSachPhim?maNhom=GP03');
       return response;
     } catch (error) {
       console.error('Error fetching phim list:', error);

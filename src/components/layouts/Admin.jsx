@@ -20,11 +20,14 @@ function getItem(label, key, icon, children) {
 export const Admin = () => {
   const navigate = useNavigate();
   const userInfo = getUserLogin();
-
+console.log(userInfo.payload.maLoaiNguoiDung)
   useEffect(() => {
-    if (!userInfo.payload?.data?.content) {
-      alert("Bạn không có quyền truy cập vào trang này");
+    if (!userInfo) {
+      alert("Bạn phải đăng nhập trước khi truy cập vào trang này");
       navigate(PATH.dangnhap);
+    } else if (userInfo.payload.maLoaiNguoiDung === 'KhachHang') {
+      alert("Bạn không có quyền truy cập vào trang này")
+      navigate(PATH.home);
     }
   }, [userInfo, navigate]);
 

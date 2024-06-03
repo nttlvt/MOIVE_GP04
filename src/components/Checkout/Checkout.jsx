@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { Button } from 'antd'
 import style from './Checkout.module.css'
 import { quanLyDatVeActionsThunks } from '../../store/QuanLyDatVe'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import './Checkout.css'
 import { CloseCircleOutlined } from '@ant-design/icons'
 import { quanLyDatVeActions } from '../../store/QuanLyDatVe/QuanLyDatVeReducer'
 import { ThongTinDatVe } from '../../store/QuanLyDatVe/ThongTinDatVe'
 import { datVeThunk } from '../../store/QuanLyDatVe/thunk'
 import { UserIcon } from '../../assets/icon/UserIcon'
+import { PATH } from '../../constant/config'
 export const Checkout = (props) => {
   const params = useParams()
   // console.log(params)
@@ -21,8 +22,18 @@ export const Checkout = (props) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(quanLyDatVeActionsThunks.quanLyDatVeThunk(params.id))
-
   }, [])
+
+  const handleDatVe = () => {
+    const thongTinDatVe = new ThongTinDatVe()
+    thongTinDatVe.maLichChieu = params.id
+    thongTinDatVe.danhSachVe = danhSachGheDangDat
+
+    dispatch(datVeThunk(thongTinDatVe)).then(() => {
+      alert('Bạn đã đặt vé thành công!')
+      window.location.reload()
+    })
+  }
 
 
   console.log('chi tiet phong ve1', chiTietPhongVe)
@@ -79,31 +90,27 @@ export const Checkout = (props) => {
             <table className="table-fixed">
               <thead>
                 <tr className="mt-3">
-                  <th className="">Ghế chưa đặt</th>
-                  <th className="">ghế đang đặt</th>
-                  <th className="">Ghế vip</th>
-                  <th className="" >Ghế đã đặt</th>
-                  <th className="">Ghế bạn đặt</th>
+                  <th className="px-5">Ghế chưa đặt</th>
+                  <th className="px-5">Ghế đang đặt</th>
+                  <th className="px-5">Ghế vip</th>
+                  <th className="px-5" >Ghế đã đặt</th>
+                  <th className="px-5">Ghế bạn đặt</th>
                 </tr>
               </thead>
 
-              <tbody className="px-20">
-                <tr>
-                  <td><button className='ghe '></button></td>
+              <tbody className="px-20 ">
+                <tr className='text-center'>
+                  <td ><button className='ghe '></button></td>
                   <td><button className='gheDangDat ghe'></button></td>
                   <td><button className='ghe gheVip'></button></td>
                   <td><button className='ghe gheDaDat'></button></td>
                   <td><button className='ghe gheDaDuocDat'></button></td>
-
                 </tr>
               </tbody>
             </table>
           </div>
-
         </div>
-        <div className="col-span-3 text-white">
-          <h3 className="text-center  text-4xl">0d</h3>
-          <hr />
+        <div className="col-span-3 text-white mt-[30px] ms-5">
           <h3 className="text-xl">{thongTinPhim?.tenPhim} </h3>
           <p>Địa điểm: {thongTinPhim?.tenCumRap} - {thongTinPhim?.tenRap}</p>
           <p>Ngày chiếu:{thongTinPhim?.ngayChieu} - {thongTinPhim?.gioChieu} RẠP 5</p>
@@ -142,17 +149,24 @@ export const Checkout = (props) => {
           </div>
           <div>
             <div
-              onClick={() => {
-                const thongTinDatVe = new ThongTinDatVe()
-                thongTinDatVe.maLichChieu = params.id
-                thongTinDatVe.danhSachVe = danhSachGheDangDat
-                console.log('thong tin ve', thongTinDatVe)
-                dispatch(datVeThunk(thongTinDatVe))
-              }}
+              onClick={handleDatVe}
               className="bg-green-500 text-white w-full text-center py-3 font-bold text-2 cursor-pointer">
               Đặt vé
             </div>
           </div>
+          <NavLink to={PATH.home}>
+          <img
+            width={130}
+            height={130}
+            src="https://cinestar.com.vn/_next/image/?url=%2Fassets%2Fimages%2Fheader-logo.png&w=1920&q=75"
+            alt=""
+            style={{
+              marginTop: "20px",
+              marginLeft: "10px",
+              marginBottom: "10px",
+            }}
+          />
+        </NavLink>
         </div>
       </div>
 

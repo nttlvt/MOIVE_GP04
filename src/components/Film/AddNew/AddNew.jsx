@@ -144,7 +144,7 @@ export const AddNew = () => {
           name="hinhAnh"
           control={control}
           render={({ field }) => (
-            <input
+            <input className="mt-2"
               type="file"
               onChange={(e) => {
                 const file = e.target.files[0];
@@ -167,7 +167,7 @@ export const AddNew = () => {
             />
           )}
         />
-        <img style={{ width: "200px", height: "150px" }} src={image} alt="" />
+        <img style={{ width: "50%", height: "50%", marginTop: '15px'}} src={image} alt="" />
       </Form.Item>
       <Form.Item label="Thao tác">
         <button

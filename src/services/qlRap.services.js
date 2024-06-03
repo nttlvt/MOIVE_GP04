@@ -13,7 +13,7 @@ export const quanLyRapServices = {
   getRap: () =>
     axios
       .get(
-        "https://movienew.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP04",
+        "https://movienew.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03",
         {
           headers: {
             TokenCybersoft:
