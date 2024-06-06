@@ -43,8 +43,8 @@ export const Banner = () => {
             </div>
             <img
               className="w-full h-full "
-              src=""
-              alt="..."
+              src="public/image/lat-mat-7.webp"
+              alt=""
             />
           </div>
         </SwiperSlide>
@@ -57,8 +57,8 @@ export const Banner = () => {
             </div>
             <img
               className="w-full h-full "
-              src=""
-              alt="..."
+              src="public/image/1215x365.webp"
+              alt=""
             />
           </div>
         </SwiperSlide>
