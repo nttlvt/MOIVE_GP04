@@ -1,9 +1,8 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Avatar, Button, Input, Popover } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { LichIcon, RapIcon, UserIcon } from "../../assets/icon/UserIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { quanLyNguoiDungActionsThunks } from "../../store/NguoiDung";
 import { quanLyNguoiDungActions } from "../../store/NguoiDung/slice";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "../../constant/config";
@@ -22,19 +21,23 @@ export const Header = () => {
       <p className="font-bold user mb-3 text-center">
         {userLogin.payload.hoTen}
       </p>
-      <Button
-        type="primary"
-        danger
-        onClick={handleLogout}
-      >
-        Đăng xuất
-      </Button>
+      <div className="flex flex-col gap-2">
+        {userLogin.payload.maLoaiNguoiDung === "QuanTri" && (
+          <Button type="primary" onClick={() => navigate(PATH.film)}>
+            Thiết lập
+          </Button>
+        )}
+        <Button type="primary" danger onClick={handleLogout}>
+          Đăng xuất
+        </Button>
+      </div>
     </div>
   ) : (
     <Button type="primary" onClick={() => navigate(PATH.dangnhap)}>
       Đăng nhập
     </Button>
   );
+
   return (
     <div className="">
       <div className="header__top">
@@ -92,8 +95,12 @@ export const Header = () => {
               suffix={<SearchOutlined />}
             />
 
-            <Popover content={content} className="text-white flex mt-5" overlayInnerStyle={{ marginTop: '-30px' }} overlayClassName="custom-popoverr"
-              > 
+            <Popover
+              content={content}
+              className="text-white flex mt-5"
+              overlayInnerStyle={{ marginTop: "-30px" }}
+              overlayClassName="custom-popoverr"
+            >
               <Avatar size={"large"} icon={<UserIcon />} />
               <p className="mt-3 font-bold user">
                 <span>Tài khoản</span>
@@ -118,7 +125,7 @@ export const Header = () => {
                 </div>
               }
               overlayClassName="custom-popoverr"
-              overlayInnerStyle={{ marginTop: '-25px' }}
+              overlayInnerStyle={{ marginTop: "-25px" }}
             >
               <div className="mt-[30px]">
                 <img
@@ -164,7 +171,6 @@ export const Header = () => {
               }
               placement="bottom"
               arrow={false}
-              // trigger={'click'}
               overlayClassName="custom-popover"
             >
               <a className="mt-3">Chọn rạp</a>

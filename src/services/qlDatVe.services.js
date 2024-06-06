@@ -2,9 +2,6 @@ import axios from 'axios'
 import { TOKEN } from '../constant/localStorage'
 import { ThongTinDatVe } from '../store/QuanLyDatVe/ThongTinDatVe'
 
-
-
-
 export const qlDatVeService = {
     layChiTietPhongVe: (maLichChieu) =>
         axios.get(`https://movienew.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`, {
