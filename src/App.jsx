@@ -38,11 +38,7 @@ function App() {
           <Route path={PATH.editfilm} element={<Edit />} />
           <Route path={PATH.addlichchieu} element={<AddLichChieu />} />
         </Route>
-
       </Routes>
-
-
-
     </>
   );
 }

@@ -6,8 +6,6 @@ import { addPhimReducer } from "./Phim/slice";
 import { updatePhimReducer } from "./Phim/sliceUpload";
 import { deletePhimReducer } from "./Phim/sliceDelete";
 
-
-
 export const rootReducer = combineReducers({
     quanLyNguoiDung: quanLyNguoiDungReducer,
     quanLyRap: quanLyRapReducer,
