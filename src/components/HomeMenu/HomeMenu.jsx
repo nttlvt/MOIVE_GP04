@@ -40,7 +40,7 @@ export const HomeMenu = () => {
                                         <Fragment key={index}>
                                             <div className='my-5' >
                                                 <div style={{display: 'flex'}}>
-                                                    <img style={{height:'100px', width: '100px', borderRadius: '10px', marginRight: '15px'}} src={phim.hinhAnh} alt={phim.tenPhim} />
+                                                    <img style={{height:'130px', width: '100px', borderRadius: '10px', marginRight: '15px'}} src={phim.hinhAnh} alt={phim.tenPhim} />
                                                     <div>
                                                         <h1 className="text-[20px] font-bold">{phim.tenPhim}</h1>
                                                         <p className='mb-5'>{cumRap.diaChi}</p>
