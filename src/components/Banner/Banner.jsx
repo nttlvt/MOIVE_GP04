@@ -43,7 +43,7 @@ export const Banner = () => {
             </div>
             <img
               className="w-full h-full "
-              src="public/image/lat-mat-7.webp"
+              src="public/image/—Pngtree—popcorn bucket_2636667.png"
               alt=""
             />
           </div>
@@ -57,7 +57,7 @@ export const Banner = () => {
             </div>
             <img
               className="w-full h-full "
-              src="public/image/1215x365.webp"
+              src="public/image/—Pngtree—popcorn bucket_2636667.png"
               alt=""
             />
           </div>
